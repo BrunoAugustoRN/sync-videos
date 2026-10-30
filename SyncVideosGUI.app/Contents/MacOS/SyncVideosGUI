@@ -1,0 +1,8 @@
+#!/bin/bash
+# Resolve o caminho sozinho a partir de onde o app realmente está, em vez de
+# um caminho fixo — assim o app funciona em qualquer pasta/máquina, contanto
+# que o .venv e o sync_gui.py continuem ao lado dele.
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+exec "$DIR/.venv/bin/python3" \
+     "$DIR/sync_gui.py" \
+     2>> "$DIR/sync_gui_crash.log"

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/Users/ilha02/Desktop/Edit/sync_gui.py", line 18, in <module>
+    import tkinter as tk
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tkinter/__init__.py", line 38, in <module>
+    import _tkinter # If this fails your Python may not be configured for Tk
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named '_tkinter'
+Traceback (most recent call last):
+  File "/Users/ilha02/Desktop/Edit/sync_gui.py", line 18, in <module>
+    import tkinter as tk
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tkinter/__init__.py", line 38, in <module>
+    import _tkinter # If this fails your Python may not be configured for Tk
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named '_tkinter'
+Traceback (most recent call last):
+  File "/Users/ilha02/Desktop/Edit/sync_gui.py", line 18, in <module>
+    import tkinter as tk
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/tkinter/__init__.py", line 38, in <module>
+    import _tkinter # If this fails your Python may not be configured for Tk
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named '_tkinter'
