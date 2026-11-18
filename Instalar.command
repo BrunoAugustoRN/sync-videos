@@ -9,6 +9,12 @@ cd "$DIR"
 echo "=== Instalando o Sync Videos ==="
 echo
 
+# Arquivos baixados pela internet ganham uma marca de "quarentena". Com ela,
+# o macOS bloqueia o app e, mesmo depois de liberado, pode rodá-lo a partir
+# de uma cópia isolada, longe do sync_gui.py e do .venv. Como você já
+# liberou este instalador, a marca é removida da pasta do projeto inteira.
+xattr -dr com.apple.quarantine "$DIR" 2>/dev/null || true
+
 if ! command -v brew >/dev/null 2>&1; then
     echo "Homebrew não encontrado, instalando (pode pedir sua senha)..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

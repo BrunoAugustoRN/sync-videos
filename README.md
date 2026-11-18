@@ -17,8 +17,19 @@ Você aponta as pastas com os vídeos de cada câmera. O programa descobre qual 
 
 Requer macOS. Os vídeos são codificados com o hardware do Mac por padrão (`h264_videotoolbox`).
 
-1. Baixe ou clone este repositório.
-2. Dê dois cliques em `Instalar.command`. Ele instala, quando necessário, o Homebrew, o `ffmpeg`, o Python 3.14 e o suporte a janelas do Python (`python-tk`), e cria um ambiente `.venv` com `numpy` e `scipy`.
+1. Baixe o projeto (botão **Code → Download ZIP**) ou clone o repositório. Mantenha todos os arquivos juntos: pode mover a pasta inteira, mas não o app sozinho.
+2. Dê dois cliques em `Instalar.command`. Ele instala, quando necessário, o Homebrew, o `ffmpeg`, o Python 3.14 e o suporte a janelas do Python (`python-tk`), e cria um ambiente `.venv` com `numpy` e `scipy`. Precisa de internet e de uma conta de administrador, porque o Homebrew pede a senha. Na primeira vez leva de 10 a 30 minutos.
+3. Ao terminar, o instalador abre o `SyncVideosGUI.app`.
+
+### Primeira vez: liberar no macOS
+
+O projeto não é assinado pela Apple, então o macOS bloqueia o `Instalar.command` na primeira vez com um aviso de que não pôde verificá-lo. Para liberar:
+
+1. Feche o aviso.
+2. Abra **Ajustes do Sistema → Privacidade e Segurança**, role até o aviso sobre o `Instalar.command` e clique em **Abrir Mesmo Assim**.
+3. Confirme com a sua senha.
+
+Só é preciso fazer isso uma vez: o instalador libera o restante da pasta, e o app passa a abrir direto. Se o `SyncVideosGUI.app` não abrir, use o `Abrir Sincronizador.command`, que faz o mesmo e mostra no Terminal o erro, se houver.
 
 ## Como usar
 
