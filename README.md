@@ -8,7 +8,7 @@ Você aponta as pastas com os vídeos de cada câmera. O programa descobre qual 
 
 1. **Extrai o áudio.** Lê os primeiros 180 segundos de cada vídeo, em mono e a 8 kHz.
 2. **Mede a diferença de tempo.** Compara o áudio de cada arquivo da câmera A com cada arquivo da câmera B por correlação cruzada. O instante do pico é localizado com GCC-PHAT, que sofre menos com ruído e eco, e a força da correlação nesse ponto vira a nota de confiança do par.
-3. **Descarta combinações impossíveis.** Quando os arquivos têm o metadado `creation_time`, estima a diferença fixa entre os relógios das duas câmeras e ignora pares cujo horário não bate com ela.
+3. **Descarta combinações impossíveis.** Quando os arquivos têm o metadado `creation_time`, estima a diferença fixa entre os relógios das duas câmeras e ignora pares que não estavam gravando ao mesmo tempo. Não é preciso que as câmeras comecem ou parem juntas.
 4. **Forma os pares.** Escolhe primeiro as combinações de maior confiança, sem repetir arquivo. O que sobra fica sem par.
 5. **Confere o resultado** (só na interface gráfica). Recalcula a diferença no meio e no fim do vídeo para detectar casamentos errados ou deriva de relógio, marca diferenças fora do padrão do lote e mostra tudo para você confirmar antes de gerar os vídeos.
 6. **Corta os vídeos.** Usa o `ffmpeg` para remover o início de quem começou a gravar antes e o final do mais longo, deixando os dois com a mesma duração.

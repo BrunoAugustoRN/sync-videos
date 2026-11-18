@@ -259,7 +259,9 @@ def estimate_clock_offset(files_a, files_b, spans,
     genuinamente corretos, a diferença (fim_A - fim_B) do metadado
     'creation_time' é praticamente a MESMA para todos eles (o deslocamento
     fixo entre os dois relógios), enquanto para pares errados essa diferença
-    é essencialmente aleatória.
+    é essencialmente aleatória. Uma tomada em que uma câmera parou bem depois
+    da outra foge desse valor, mas não atrapalha a estimativa, que é por
+    maioria de votos.
 
     Esta função testa todas as combinações A×B, agrupa as diferenças em
     'baldes' de poucos segundos e retorna o valor central do balde mais
@@ -288,15 +290,18 @@ def estimate_clock_offset(files_a, files_b, spans,
 
 
 def _time_plausible(span_a, span_b, clock_offset, tolerance=CLOCK_OFFSET_TOLERANCE):
-    """True se a diferença entre os horários de término dos dois arquivos
-    bate com o deslocamento de relógio estimado entre as câmeras (dentro de
-    `tolerance`). Se faltar metadado de algum lado, ou não houver um
-    deslocamento confiável estimado, não filtra (cai no comportamento
-    antigo, só por áudio)."""
+    """True se as duas gravações se sobrepõem no tempo depois de converter o
+    horário da câmera B para o relógio da câmera A (com `tolerance` segundos
+    de folga). Duas gravações da mesma tomada precisam ter rodado ao mesmo
+    tempo, mas não precisam começar nem terminar juntas: uma câmera pode ter
+    continuado gravando bem depois da outra. Se faltar metadado de algum
+    lado, ou não houver um deslocamento confiável estimado, não filtra (cai
+    no comportamento só por áudio)."""
     if span_a is None or span_b is None or clock_offset is None:
         return True
-    delta = span_a[1] - span_b[1]
-    return abs(delta - clock_offset) <= tolerance
+    b_start = span_b[0] + clock_offset
+    b_end = span_b[1] + clock_offset
+    return span_a[0] <= b_end + tolerance and b_start <= span_a[1] + tolerance
 
 
 def auto_pair(files_a, files_b, audio, sr):
