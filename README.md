@@ -51,10 +51,6 @@ Abra `SyncVideosGUI.app` ou `Abrir Sincronizador.command` e siga estes passos:
 
 A linha de comando não faz a conferência do passo 5: ela decide só pela confiança mínima. Pares abaixo do limite são pulados. Na interface gráfica, um par abaixo do limite só é gerado se a conferência confirmar a diferença de tempo no meio e no fim do vídeo.
 
-### Arrastar e soltar (`SyncVideos.app`)
-
-Arraste para cima do app uma pasta que contenha as subpastas `camA` e `camB`, ou as duas pastas juntas. Ele roda a linha de comando em segundo plano, avisa o andamento por notificações e abre a pasta de saída `sincronizado_<data>_<hora>` ao terminar. Como na linha de comando, não há a conferência do passo 5. Precisa do `Instalar.command` rodado antes, e o app deve ficar na mesma pasta que `sync_videos.py`.
-
 ## O que é gerado
 
 | Arquivo | Conteúdo |
