@@ -5,7 +5,7 @@
 	<key>CFBundleExecutable</key>
 	<string>SyncVideosGUI</string>
 	<key>CFBundleIdentifier</key>
-	<string>local.ilha01.syncvideosgui</string>
+	<string>io.github.brunoaugustorn.syncvideos</string>
 	<key>CFBundleName</key>
 	<string>Sync Videos</string>
 	<key>CFBundlePackageType</key>
