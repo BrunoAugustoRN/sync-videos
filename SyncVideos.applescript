@@ -2,11 +2,21 @@
 -- Arraste a pasta "videos" (contendo camA/ e camB/ dentro) — ou as duas
 -- pastas camA e camB diretamente — em cima deste app.
 
-property pyScript : "/Users/ilha01/Desktop/PROJETOS/Edit/sync_videos.py"
-property pythonBin : "/usr/bin/python3"
-property extraPath : "/opt/homebrew/bin"
+-- O script e o Python do .venv são procurados ao lado do próprio app, então
+-- ele funciona em qualquer pasta, depois de rodar o Instalar.command.
+property extraPath : "/opt/homebrew/bin:/usr/local/bin"
 
 on open theItems
+	set appPath to POSIX path of (path to me)
+	if appPath ends with "/" then set appPath to text 1 thru -2 of appPath
+	set appDir to my parentPath(appPath)
+	set pyScript to appDir & "/sync_videos.py"
+	set pythonBin to appDir & "/.venv/bin/python3"
+	if not my posixExists(pythonBin) then
+		display alert "Sync Videos ainda não foi instalado" message "Dê dois cliques em Instalar.command, na mesma pasta deste app, e tente de novo." as critical
+		return
+	end if
+
 	set camAPath to ""
 	set camBPath to ""
 

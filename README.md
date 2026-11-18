@@ -53,7 +53,7 @@ A linha de comando não faz a conferência do passo 5: ela decide só pela confi
 
 ### Arrastar e soltar (`SyncVideos.app`)
 
-Esta versão não funciona fora da máquina original: o caminho do script está fixo em `SyncVideos.applescript` e ela usa o `/usr/bin/python3`, sem o `.venv`. Prefira a interface gráfica.
+Arraste para cima do app uma pasta que contenha as subpastas `camA` e `camB`, ou as duas pastas juntas. Ele roda a linha de comando em segundo plano, avisa o andamento por notificações e abre a pasta de saída `sincronizado_<data>_<hora>` ao terminar. Como na linha de comando, não há a conferência do passo 5. Precisa do `Instalar.command` rodado antes, e o app deve ficar na mesma pasta que `sync_videos.py`.
 
 ## O que é gerado
 
