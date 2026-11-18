@@ -22,7 +22,7 @@ fi
 
 echo
 echo "Instalando ffmpeg e Python (pode demorar alguns minutos na primeira vez)..."
-brew install ffmpeg python@3.14
+brew install ffmpeg python@3.14 python-tk@3.14
 
 echo
 echo "Preparando o ambiente do programa..."

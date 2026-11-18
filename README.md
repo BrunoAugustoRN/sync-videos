@@ -18,12 +18,7 @@ Você aponta as pastas com os vídeos de cada câmera. O programa descobre qual 
 Requer macOS. Os vídeos são codificados com o hardware do Mac por padrão (`h264_videotoolbox`).
 
 1. Baixe ou clone este repositório.
-2. Dê dois cliques em `Instalar.command`. Ele instala, quando necessário, o Homebrew, o `ffmpeg` e o Python 3.14, e cria um ambiente `.venv` com `numpy` e `scipy`.
-3. Instale o suporte a janelas do Python, que o instalador ainda não inclui:
-
-   ```bash
-   brew install python-tk@3.14
-   ```
+2. Dê dois cliques em `Instalar.command`. Ele instala, quando necessário, o Homebrew, o `ffmpeg`, o Python 3.14 e o suporte a janelas do Python (`python-tk`), e cria um ambiente `.venv` com `numpy` e `scipy`.
 
 ## Como usar
 
