@@ -64,7 +64,7 @@ Esta versão não funciona fora da máquina original: o caminho do script está 
 
 | Arquivo | Conteúdo |
 |---|---|
-| `take01_<nome_original>` | Vídeos sincronizados, um par para cada número de take |
+| `take01_<nome_original>` | Vídeos sincronizados, um par para cada número de take. Se as duas câmeras usam o mesmo nome de arquivo (ex.: `C0001.MP4`), vira `take01_camA_C0001.MP4` e `take01_camB_C0001.MP4` |
 | `pairing_report.csv` | Pares, diferença de tempo, confiança e status |
 | `avisos.txt` | Pares a conferir e erros (só na interface gráfica, quando houver) |
 | `progress.txt`, `DONE`, `FAILED` | Andamento da execução (só na linha de comando) |
@@ -77,4 +77,4 @@ Os vídeos originais não são alterados.
 - Só lê os arquivos diretamente dentro da pasta escolhida, sem entrar em subpastas. Formatos aceitos: `.mp4`, `.mov`, `.m4v`, `.avi`, `.mkv`, `.mts`, `.m2ts` e `.mxf`.
 - Por padrão, os dois áudios precisam ter trechos em comum nos primeiros 180 segundos analisados. Se as gravações só se sobrepõem depois disso, aumente `--analyze-seconds`.
 - A deriva de relógio entre as câmeras é só detectada, não corrigida: o programa aplica uma única diferença de tempo ao vídeo inteiro.
-- Na pasta de saída, arquivos com o mesmo nome são sobrescritos sem aviso.
+- Se a pasta de saída já tiver arquivos de uma execução anterior, os de mesmo nome são sobrescritos sem aviso.

@@ -489,6 +489,17 @@ def run_trim(src: Path, dst: Path, trim_seconds: float, duration: float,
         raise subprocess.CalledProcessError(proc.returncode, cmd)
 
 
+def output_names(fa: Path, fb: Path, out_dir: Path, index: int):
+    """Nomes de saída do par: take01_<nome_original>. Quando as duas câmeras
+    usam o mesmo nome de arquivo (ex.: duas Sony gravando C0001.MP4), acrescenta
+    camA/camB para um não sobrescrever o outro. A comparação ignora maiúsculas
+    porque o sistema de arquivos do macOS também ignora."""
+    tag = f"take{index:02d}"
+    if fa.name.lower() == fb.name.lower():
+        return (out_dir / f"{tag}_camA_{fa.name}", out_dir / f"{tag}_camB_{fb.name}")
+    return out_dir / f"{tag}_{fa.name}", out_dir / f"{tag}_{fb.name}"
+
+
 def sync_pair(fa: Path, fb: Path, offset: float, out_dir: Path, index: int,
               copy_mode: bool, equal_length: bool, hw_encode: bool, cancel_event=None):
     dur_a, dur_b = ffprobe_duration(fa), ffprobe_duration(fb)
@@ -504,9 +515,7 @@ def sync_pair(fa: Path, fb: Path, offset: float, out_dir: Path, index: int,
         out_dur_a = dur_a - trim_a
         out_dur_b = dur_b - trim_b
 
-    tag = f"take{index:02d}"
-    dst_a = out_dir / f"{tag}_{fa.stem}{fa.suffix}"
-    dst_b = out_dir / f"{tag}_{fb.stem}{fb.suffix}"
+    dst_a, dst_b = output_names(fa, fb, out_dir, index)
     run_trim(fa, dst_a, trim_a, out_dur_a, copy_mode, hw_encode, cancel_event)
     run_trim(fb, dst_b, trim_b, out_dur_b, copy_mode, hw_encode, cancel_event)
     return dst_a, dst_b, trim_a, trim_b, out_dur_a, out_dur_b
