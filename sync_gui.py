@@ -564,7 +564,17 @@ class SyncApp(tk.Tk):
                 q.put(("progress", i, len(pairs), f"Verificando consistência: {i}/{len(pairs)}"))
                 consistent, checks = sv.verify_offset_consistency(fa, fb, offset, SAMPLE_RATE)
 
-                if checks:
+                if checks and not consistent and conf < MIN_CONFIDENCE:
+                    # Áudio quase sem semelhança E offset que não se confirma
+                    # no resto do vídeo: quase certamente são gravações
+                    # diferentes que só sobraram sem par. Não gera esse take.
+                    low_pairs.append((fa, fb, offset, conf))
+                    line = (f"NÃO sincronizado (confiança muito baixa {conf:.2f} e offset não "
+                            f"se confirma ao longo do vídeo, devem ser gravações diferentes): "
+                            f"{fa.name} <-> {fb.name}")
+                    warning_lines.append(("error", line))
+                    q.put(("warn", "error", line))
+                elif checks:
                     good_pairs.append((fa, fb, offset, conf))
                     if not consistent:
                         detail = "; ".join(f"{label} diff {diff:.2f}s" for label, _o, diff, _c in checks)

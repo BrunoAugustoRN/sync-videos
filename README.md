@@ -54,7 +54,7 @@ Abra `SyncVideosGUI.app` ou `Abrir Sincronizador.command` e siga estes passos:
 | `--software-encoder` | Usa `libx264` em vez do codificador de hardware do Mac |
 | `--no-equal-length` | Não corta o final para igualar a duração do par |
 
-A linha de comando não faz a conferência do passo 5: ela decide só pela confiança mínima. Pares abaixo do limite são pulados.
+A linha de comando não faz a conferência do passo 5: ela decide só pela confiança mínima. Pares abaixo do limite são pulados. Na interface gráfica, um par abaixo do limite só é gerado se a conferência confirmar a diferença de tempo no meio e no fim do vídeo.
 
 ### Arrastar e soltar (`SyncVideos.app`)
 
